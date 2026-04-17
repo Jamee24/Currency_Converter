@@ -1,6 +1,7 @@
 [build]
-  command = "npm run build --prefix frontend"
-  publish = "frontend/dist/frontend"     # ← Change "converter" to your actual Angular output folder name
+  base = "frontend"                    # ← This is the most important line
+  command = "npm ci && npm run build"   # or "ng build --configuration production"
+  publish = "dist/frontend"            # ← Change "converter" to your actual output folder name
 
 [[redirects]]
   from = "/*"
