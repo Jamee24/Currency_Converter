@@ -1,6 +1,6 @@
 [build]
   command = "npm run build --prefix frontend"
-  publish = "frontend/dist/converter"     # ← Change "converter" to your actual Angular output folder name
+  publish = "frontend/dist/frontend"     # ← Change "converter" to your actual Angular output folder name
 
 [[redirects]]
   from = "/*"

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-backend-name.onrender.com'   // ← Update after backend deploy
+  apiUrl: 'https://currencyconverter-production-c815.up.railway.app'   // ← Your Railway URL
 };

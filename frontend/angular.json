@@ -19,6 +19,12 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",

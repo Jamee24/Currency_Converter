@@ -2,6 +2,7 @@ import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Conversion } from '../models/conversion/conversion.model'
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CurrencyService {
