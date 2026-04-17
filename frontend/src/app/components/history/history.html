@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Conversion History</mat-card-title>
+        <button mat-button color="warn" (click)="clear()">Clear All</button>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+          @for (conv of currencyService.history(); track conv.id) {
+            <mat-list-item>
+              <span>{{ conv.timestamp | date:'medium' }}</span>
+              <span class="history-item">
+                {{ conv.amount }} {{ conv.from }} → {{ conv.result }} {{ conv.to }}
+                <small>({{ conv.historicalDate }})</small>
+              </span>
+            </mat-list-item>
+          }
+        </mat-list>
+    </mat-card-content>
+</mat-card>

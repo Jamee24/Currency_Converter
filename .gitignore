@@ -1,0 +1,57 @@
+# Node modules - Prevent deploying huge node_modules
+**/node_modules
+node_modules
+
+# Angular build output
+frontend/dist
+frontend/.angular
+frontend/.ng
+
+# NestJS build output
+backend/dist
+backend/.nest
+
+# Environment variables (Never commit secrets!)
+.env
+.env.local
+.env.development
+.env.production
+*.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Coverage & testing
+coverage
+.nyc_output
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Angular specific
+.angular/cache
+.angular
+
+# NestJS specific
+backend/tsconfig.tsbuildinfo
+
+# Temporary folders
+tmp/
+temp/
+
+# Netlify / Deployment artifacts
+.netlify
+
+# Optional: If you use Nx workspace later
+.nx/cache
+.nx/workspace-data

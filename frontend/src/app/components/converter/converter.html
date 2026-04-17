@@ -1,0 +1,65 @@
+<mat-card class="converter-card">
+  <mat-card-header>
+    <mat-card-title>Currency Converter</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="form-grid">
+      <!-- Amount + From -->
+      <mat-form-field appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" [ngModel]="amount()" (ngModelChange)="amount.set($event)" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <mat-select [ngModel]="fromCurrency()" (ngModelChange)="fromCurrency.set($event); convert()">
+          <mat-option *ngFor="let cur of currenciesList()" [value]="cur.code">
+            {{ cur.code }} - {{ cur.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button (click)="swapCurrencies()">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
+
+      <!-- To -->
+      <mat-form-field appearance="fill">
+        <mat-label>To</mat-label>
+        <mat-select [ngModel]="toCurrency()" (ngModelChange)="toCurrency.set($event); convert()">
+          <mat-option *ngFor="let cur of currenciesList()" [value]="cur.code">
+            {{ cur.code }} - {{ cur.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Historical Date -->
+      <mat-form-field appearance="fill">
+        <mat-label>Historical Date</mat-label>
+        <input matInput [matDatepicker]="picker" [ngModel]="selectedDate()" (ngModelChange)="selectedDate.set($event); convert()" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- Loader / Result -->
+    <div class="result-area" *appLoading="loading()">
+      @if (error()) {
+        <p class="error">{{ error() }}</p>
+      } @else if (result()) {
+        <div class="result">
+          <h2>{{ amount() }} {{ fromCurrency() }} = {{ result()!.result }} {{ toCurrency() }}</h2>
+          <p class="rate">1 {{ fromCurrency() }} = {{ result()!.rate }} {{ toCurrency() }}</p>
+          <small>Rate from {{ selectedDate() | date:'mediumDate' }}</small>
+        </div>
+      }
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="convert()" [disabled]="loading()">
+      Convert
+    </button>
+  </mat-card-actions>
+</mat-card>
